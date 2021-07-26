@@ -3,13 +3,6 @@ var table = $("#datas").DataTable({ scrollX: true });
 
 table.clear().draw();
 
-/*
-
-Do you have questions about cookies? no i think that's good, but can i make english as the default when you first start the browser? also what does the french title 
-
- */
-
-
 $.ajax({
   url: "index.php",
   type: "post",

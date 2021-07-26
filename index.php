@@ -1,6 +1,6 @@
 <?php 
 
-    // solving cors block
+    // bypassing cors block
 	if (isset($_POST['getdata'])) {
         //echo '2';
 		$ch = curl_init();
@@ -13,18 +13,13 @@
 		echo $data;
 		exit();
 	}
-
-
     
 	$default_lang = 'en';
-
-
 
 	if (isset($_GET['lang'])) {
 		//setcookie("default_lang", $_GET['lang']);
 		$default_lang = $_GET['lang'];
 	}
-
 
 
 ?>
