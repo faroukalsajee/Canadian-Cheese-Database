@@ -3,8 +3,15 @@ var table = $("#datas").DataTable({ scrollX: true });
 
 table.clear().draw();
 
+/*
+
+Do you have questions about cookies? no i think that's good, but can i make english as the default when you first start the browser? also what does the french title 
+
+ */
+
+
 $.ajax({
-  url: "script.php",
+  url: "index.php",
   type: "post",
   dataType: "json",
   data: { getdata: "https://od-do.agr.gc.ca/canadianCheeseDirectory.json" },
@@ -22,6 +29,7 @@ $.ajax({
           name = value.CheeseNameFr;
         }
       }
+
       if (default_lang == "en") {
         table.row.add([
           value.CheeseId,
