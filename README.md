@@ -1,6 +1,6 @@
 # Canadian Cheese Database
 
-## Server setup
+## Servre setup
 
 To run this php script, You will need a web server.
 
