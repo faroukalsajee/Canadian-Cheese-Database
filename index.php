@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.min.css">
     <script type="text/javascript">
-    var default_lang = '<?php echo $default_lang; ?>';
+    let default_lang = '<?php echo $default_lang; ?>';
     </script>
     <style type="text/css">
     table.dataTable thead th {
