@@ -7,13 +7,13 @@ $.ajax({
   url: "index.php",
   type: "post",
   dataType: "json",
-  data: { getdata: "https://od-do.agr.gc.ca/canadianCheeseDirectory.json" },
+  data: {},
   success: function (response) {
     console.log(response);
 
     $.each(response.CheeseDirectory, function (index, value) {
       let organic = "Yes";
-      if (value.Organic == 0) organic = "No";
+      if (value.Organic === 0) organic = "No";
 
       let name = value.CheeseNameEn;
 
@@ -75,7 +75,7 @@ $.ajax({
     });
     table.draw(false);
   },
-  error: function (jqXHR, textStatus, errorThrown) {
+  error: function (_jqXHR, textStatus, errorThrown) {
     console.log(textStatus, errorThrown);
   },
 });

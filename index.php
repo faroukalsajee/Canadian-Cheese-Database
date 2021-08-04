@@ -1,10 +1,11 @@
 <?php 
 
-    // bypassing cors block
-	if (isset($_POST['getdata'])) {
-        //echo '2';
+    // post request handler
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // bypassing cors block
+        $url = "https://od-do.agr.gc.ca/canadianCheeseDirectory.json";
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $_POST['getdata']);
+		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -14,13 +15,14 @@
 		exit();
 	}
     
+
+    // get request handler
 	$default_lang = 'en';
 
 	if (isset($_GET['lang'])) {
-		//setcookie("default_lang", $_GET['lang']);
+		setcookie("default_lang", $_GET['lang']);
 		$default_lang = $_GET['lang'];
 	}
-
 
 ?>
 
@@ -32,7 +34,7 @@
     <?php if ($default_lang == 'fr'): ?>
     <title>Base de données sur les fromages</title>
     <?php else: ?>
-    <title>Cheease database</title>
+    <title>Cheese database</title>
     <?php endif ?>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.min.css">
@@ -102,7 +104,7 @@
     <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="assets/js/dataTables.bootstrap5.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js?rand=<?php echo rand() ?>"></script>
 </body>
 
 </html>
