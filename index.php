@@ -1,21 +1,5 @@
 <?php 
-
-    // post request handler
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // bypassing cors block
-        $url = "https://od-do.agr.gc.ca/canadianCheeseDirectory.json";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		echo $data;
-		exit();
-	}
     
-
     // get request handler
 	$default_lang = 'en';
 
@@ -23,6 +7,15 @@
 		setcookie("default_lang", $_GET['lang']);
 		$default_lang = $_GET['lang'];
 	}
+
+    $url = "https://od-do.agr.gc.ca/canadianCheeseDirectory.json";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $mainJson = curl_exec($ch);
+    curl_close($ch);
 
 ?>
 
@@ -40,6 +33,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.min.css">
     <script type="text/javascript">
     let default_lang = '<?php echo $default_lang; ?>';
+    let mainJson = <?php echo $mainJson; ?>;
+
     </script>
     <style type="text/css">
     table.dataTable thead th {
