@@ -1,13 +1,6 @@
 <?php 
     
-    // get request handler
-	$default_lang = 'en';
-
-	if (isset($_GET['lang'])) {
-		setcookie("default_lang", $_GET['lang']);
-		$default_lang = $_GET['lang'];
-	}
-
+    // initiating curl session after page onload connection
     $url = "https://od-do.agr.gc.ca/canadianCheeseDirectory.json";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -16,6 +9,14 @@
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     $mainJson = curl_exec($ch);
     curl_close($ch);
+
+    // get request handler
+	$default_lang = 'en';
+
+	if (isset($_GET['lang'])) {
+		setcookie("default_lang", $_GET['lang']);
+		$default_lang = $_GET['lang'];
+	}
 
 ?>
 

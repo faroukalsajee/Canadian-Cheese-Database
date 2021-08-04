@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 let table = $("#datas").DataTable({ scrollX: true });
 
 table.clear().draw();
